@@ -740,6 +740,7 @@ void DownloadManager::UploadScore(HighScore* hs)
 			for (auto error : errors) {
 				int status = error["status"];
 				if (status == 22) {
+					MESSAGEMAN->Broadcast("LoginExpired");
 					delay = true;
 					DLMAN->StartSession(DLMAN->sessionUser, DLMAN->sessionPass, [hs](bool logged) {
 						if (logged) {
@@ -807,6 +808,7 @@ void DownloadManager::UploadScoreWithReplayData(HighScore* hs)
 				for (auto error : errors) {
 					int status = error["status"];
 					if (status == 22) {
+						MESSAGEMAN->Broadcast("LoginExpired");
 						delay = true;
 						DLMAN->StartSession(DLMAN->sessionUser, DLMAN->sessionPass, [hs](bool logged) {
 							if (logged) {
@@ -923,6 +925,7 @@ HTTPRequest* DownloadManager::SendRequestToURL(string url, vector<pair<string, s
 			bool delay = false;
 			for (auto error : errors) { 
 				if (error["status"] == 22) {
+					MESSAGEMAN->Broadcast("LoginExpired");
 					delay = true;
 					DLMAN->StartSession(DLMAN->sessionUser, DLMAN->sessionPass, [req, msg, afterDone](bool logged) {
 						if (logged) {

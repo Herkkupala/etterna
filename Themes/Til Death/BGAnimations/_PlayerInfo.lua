@@ -116,6 +116,9 @@ t[#t+1] = Def.ActorFrame{
 		InitCommand=function(self)
 			self:xy(SCREEN_CENTER_X,AvatarY+20):halign(0.5):zoomto(100,30):diffusealpha(0)
 		end,
+		LoginExpiredMessageCommand=function(self)
+			ms.ok("Login expired, please login again!")
+		end,
 		LoginFailedMessageCommand=function(self)
 			ms.ok("Login failed!")
 		end,

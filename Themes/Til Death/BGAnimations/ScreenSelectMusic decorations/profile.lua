@@ -38,6 +38,9 @@ local t = Def.ActorFrame{
 	LoginFailedMessageCommand=function(self)
 		BroadcastIfActive("UpdateRanking")
 	end,
+	LoginExpiredMessageCommand=function(self)
+		BroadcastIfActive("UpdateRanking")
+	end,
 	OnlineUpdateMessageCommand=function(self)
 		BroadcastIfActive("UpdateRanking")
 	end,
